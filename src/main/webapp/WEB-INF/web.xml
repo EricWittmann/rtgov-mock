@@ -7,12 +7,22 @@
   <display-name>RTGov Mock</display-name>
 
   <servlet>
-    <servlet-name>MockServices</servlet-name>
+    <servlet-name>Seeder</servlet-name>
     <servlet-class>
-      org.overlord.rtgov.mock.server
+      org.overlord.rtgov.mock.server.RtgovDatabaseSeeder
     </servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>Seeder</servlet-name>
+    <url-pattern>/seeder</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+    <servlet-name>MockServices</servlet-name>
+    <servlet-class>
+      org.overlord.rtgov.mock.server.OverlordRTGovMockServlet
+    </servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>MockServices</servlet-name>
     <url-pattern>/*</url-pattern>

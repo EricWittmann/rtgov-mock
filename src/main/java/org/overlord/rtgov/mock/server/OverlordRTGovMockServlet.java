@@ -46,7 +46,7 @@ public class OverlordRTGovMockServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
-        String path = req.getServletPath();
+        String path = req.getPathInfo();
         System.out.println("Mock Request (GET): " + path);
         if ("/call/trace/instance".equals(path)) {
             resp.setContentType("application/json");
@@ -62,7 +62,7 @@ public class OverlordRTGovMockServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
-        String path = req.getServletPath();
+        String path = req.getPathInfo();
         System.out.println("Mock Request (POST): " + path);
         if ("/acm/query".equals(path)) {
             resp.setContentType("application/json");
