@@ -1,4 +1,5 @@
 /*
+
  * Copyright 2013 JBoss Inc
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,6 +52,9 @@ public class OverlordRTGovMockServlet extends HttpServlet {
         if ("/call/trace/instance".equals(path)) {
             resp.setContentType("application/json");
             send(resp, "calltrace.json");
+        } else if ("/service/dependency/overview".equals(path)) {
+            resp.setContentType("image/svg+xml");
+            send(resp, "service-overview.svg");
         } else {
             super.doGet(req, resp);
         }
@@ -78,6 +82,7 @@ public class OverlordRTGovMockServlet extends HttpServlet {
      * @throws IOException
      */
     private void send(HttpServletResponse resp, String resourceName) throws IOException {
+        System.out.println("Delivering " + resourceName);
         InputStream is = getClass().getResourceAsStream(resourceName);
         OutputStream os = resp.getOutputStream();
         IOUtils.copy(is, os);
